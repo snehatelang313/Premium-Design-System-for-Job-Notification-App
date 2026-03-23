@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Job Notification SaaS Design System</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bitter:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./design-system.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="top-bar">
+        <div class="container top-bar__inner">
+          <div class="heading-md">Job Notification App</div>
+          <div class="top-bar__center text-secondary">Step 1 / 5</div>
+          <div class="top-bar__right">
+            <span class="badge">Not Started</span>
+          </div>
+        </div>
+      </header>
+
+      <section class="context-header">
+        <div class="container stack-sm">
+          <span class="eyebrow">This step</span>
+          <h1 class="display">Set up job alert criteria</h1>
+          <p class="subtext">
+            Define titles and location. Alerts run on your saved rules only.
+          </p>
+        </div>
+      </section>
+
+      <section class="workspace">
+        <div class="container workspace-grid">
+          <div class="workspace-primary">
+            <article class="card stack-sm">
+              <span class="eyebrow">Workspace</span>
+              <h2 class="heading-xl">Alert criteria</h2>
+              <p class="subtext">
+                Use plain job titles and one location preference per field.
+              </p>
+            </article>
+
+            <article class="card stack-md">
+              <div class="stack-xs">
+                <span class="eyebrow">Inputs</span>
+                <h3 class="heading-lg">Search fields</h3>
+              </div>
+
+              <form class="stack-sm" aria-label="Job alert criteria">
+                <label class="field">
+                  <span class="label">Job title</span>
+                  <input class="input" type="text" placeholder="e.g. Product Manager" />
+                </label>
+
+                <label class="field">
+                  <span class="label">Location</span>
+                  <select class="select" aria-label="Work location">
+                    <option>Remote</option>
+                    <option>Hybrid</option>
+                    <option>On-site</option>
+                  </select>
+                </label>
+              </form>
+
+              <div class="stack-xs">
+                <button class="btn btn-primary" type="button">Save criteria</button>
+                <button class="btn btn-secondary" type="button">Cancel</button>
+              </div>
+
+              <table class="table" role="table" aria-label="Recent matches">
+                <thead>
+                  <tr>
+                    <th>Role</th>
+                    <th>Company</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Senior Product Designer</td>
+                    <td>Northline Labs</td>
+                    <td><span class="badge badge-success">Reviewed</span></td>
+                  </tr>
+                  <tr>
+                    <td>Software Engineer II</td>
+                    <td>Atlas Careers</td>
+                    <td><span class="badge badge-warning">Pending</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </article>
+
+            <article class="card stack-md" aria-labelledby="patterns-heading">
+              <div class="stack-xs">
+                <span class="eyebrow">Patterns</span>
+                <h3 class="heading-lg" id="patterns-heading">Error and empty states</h3>
+              </div>
+
+              <div
+                class="alert-error"
+                role="alert"
+                aria-labelledby="err-summary"
+              >
+                <p class="alert-error__summary" id="err-summary">
+                  Could not reach the server
+                </p>
+                <p class="alert-error__fix">
+                  Wait a moment, check your connection, then press Retry. Nothing
+                  you entered here is lost.
+                </p>
+              </div>
+
+              <label class="field field--invalid">
+                <span class="label">Work email (example)</span>
+                <input
+                  class="input"
+                  type="email"
+                  aria-invalid="true"
+                  aria-describedby="email-err"
+                  autocomplete="email"
+                  value="not-an-email"
+                />
+                <p class="field-error" id="email-err">
+                  <strong>This does not look like a valid email.</strong>
+                  Use name@company.com, or leave the field blank if it is optional.
+                </p>
+              </label>
+
+              <div class="empty-state">
+                <h4 class="empty-state__title">No rows to show</h4>
+                <p class="empty-state__body">
+                  Save your criteria first. Matching jobs will appear in this table
+                  after the next sync.
+                </p>
+                <button class="btn btn-primary" type="button">Save criteria</button>
+              </div>
+            </article>
+          </div>
+
+          <aside class="workspace-secondary">
+            <article class="card card--quiet stack-md">
+              <span class="eyebrow">Step 1 of 5</span>
+              <h3 class="heading-lg">What you are doing</h3>
+              <p class="text-secondary text-block">
+                You are entering the filters used to match new postings. Nothing
+                is sent until you confirm delivery settings in a later step.
+              </p>
+
+              <div class="stack-sm">
+                <span class="label">Copyable prompt</span>
+                <div class="prompt-box">
+                  <pre class="prompt-box__text" id="step-prompt">Summarize job alert criteria: title keywords, location (remote/hybrid/on-site), and any exclusions. Output as bullet list.</pre>
+                  <div class="panel-actions">
+                    <button type="button" class="btn btn-panel" data-copy="#step-prompt">
+                      Copy prompt
+                    </button>
+                    <button type="button" class="btn btn-panel">
+                      Skip for now
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </aside>
+        </div>
+      </section>
+
+      <footer class="proof-footer">
+        <div class="container stack-sm">
+          <span class="label">Proof checklist</span>
+          <ul class="proof-checklist" aria-label="Release checklist">
+            <li>UI Built</li>
+            <li>Logic Working</li>
+            <li>Test Passed</li>
+            <li>Deployed</li>
+          </ul>
+        </div>
+      </footer>
+    </main>
+    <script>
+      document.querySelectorAll("[data-copy]").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          var sel = btn.getAttribute("data-copy");
+          var el = document.querySelector(sel);
+          if (!el || !navigator.clipboard) return;
+          var text = el.textContent || "";
+          navigator.clipboard.writeText(text.trim()).then(function () {
+            var prev = btn.textContent;
+            btn.textContent = "Copied";
+            setTimeout(function () {
+              btn.textContent = prev;
+            }, 1600);
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
